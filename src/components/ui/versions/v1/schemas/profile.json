@@ -1,0 +1,66 @@
+{
+	"type": "object",
+	"properties": {
+		"version": {
+			"type": "number"
+		},
+		"format": {
+			"type": "string"
+		},
+		"design": {
+			"type": "object",
+			"properties": {
+				"theme": {
+					"type": "string"
+				},
+				"animation": {
+					"type": "string"
+				}
+			}
+		},
+		"metadata": {
+			"type": "object",
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				}
+			},
+			"required": ["title", "description"]
+		},
+		"components": {
+			"type": "object",
+			"properties": {
+				"header": {
+					"type": "object",
+					"properties": {
+						"image": {
+							"type": "object",
+							"properties": {
+								"src": {
+									"type": "string"
+								},
+								"alt": {
+									"type": "string"
+								}
+							},
+							"required": ["src", "alt"]
+						},
+						"bio": {
+							"type": "string"
+						}
+					},
+					"required": ["image"]
+				},
+				"blocks": {
+					"type": "array",
+					"items": {}
+				}
+			},
+			"required": ["header"]
+		}
+	},
+	"required": ["version", "format", "metadata", "components"]
+}
