@@ -12,7 +12,7 @@ export default function Article({ data, image, username, gateway }) {
 						<h1
 							className={`max-[1200px]:hidden leading-[0.8] uppercase break-words ${bebas_neue.className}`}
 							style={{
-								fontSize: data.components.header.text.desktop
+								fontSize: data.components.header.size.desktop
 							}}
 						>
 							{data.components.header.headline}
@@ -20,7 +20,7 @@ export default function Article({ data, image, username, gateway }) {
 						<h1
 							className={`max-[1200px]:flex hidden leading-[0.8] uppercase break-words ${bebas_neue.className}`}
 							style={{
-								fontSize: data.components.header.text.mobile
+								fontSize: data.components.header.size.mobile
 							}}
 						>
 							{data.components.header.headline}
