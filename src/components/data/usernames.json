@@ -1,0 +1,90 @@
+{
+	"ai": {
+		"user": "ai",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/ai/${}"
+	},
+	"lens": {
+		"user": "lens",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/lens/${}"
+	},
+	"lenspage": {
+		"user": "lens",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/lens/${}"
+	},
+	"sam": {
+		"user": "sam",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/samlarsen/${}"
+	},
+	"samlarsen": {
+		"user": "sam",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/samlarsen/${}"
+	},
+	"evan": {
+		"user": "evan",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/evanlarsen/${}"
+	},
+	"evanlarsen": {
+		"user": "evan",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/evanlarsen/${}"
+	},
+	"evanlarsenn": {
+		"user": "evan",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/evanlarsen/${}"
+	},
+	"larsenvisuals": {
+		"user": "larsenvisuals",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/evanlarsen/${}"
+	},
+	"publicspace": {
+		"user": "publicspace",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/publicspace/${}"
+	},
+	"apublicspace": {
+		"user": "publicspace",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/publicspace/${}"
+	},
+	"public": {
+		"user": "publicspace",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/publicspace/${}"
+	},
+	"space": {
+		"user": "publicspace",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/publicspace/${}"
+	},
+	"tyleranne": {
+		"user": "tyleranne",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/tyleranne/${}"
+	},
+	"smileitzkyle": {
+		"user": "smileitzkyle",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/smileitzkyle/${}"
+	},
+	"playngo": {
+		"user": "playngo",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/playngo/${}"
+	},
+	"jason": {
+		"user": "jason",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/jasontheprince/${}"
+	},
+	"jasontheprince": {
+		"user": "jason",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/jasontheprince/${}"
+	},
+	"saveaj": {
+		"user": "saveaj",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/saveaj/${}"
+	},
+	"ryannichols": {
+		"user": "ryannichols",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/ryannichols/${}"
+	},
+	"music": {
+		"user": "music",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/music/${}"
+	},
+	"test": {
+		"user": "test",
+		"api": "https://lenspage.nyc3.cdn.digitaloceanspaces.com/test/${}"
+	}
+}
