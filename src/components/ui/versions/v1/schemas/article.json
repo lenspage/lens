@@ -39,7 +39,7 @@
 						"headline": {
 							"type": "string"
 						},
-						"text": {
+						"size": {
 							"type": "object",
 							"properties": {
 								"desktop": {
@@ -52,7 +52,7 @@
 							"required": ["desktop", "mobile"]
 						}
 					},
-					"required": ["headline", "text"]
+					"required": ["headline", "size"]
 				},
 				"timestamp": {
 					"type": "string"
