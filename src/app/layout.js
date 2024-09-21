@@ -1,6 +1,6 @@
 import GlobalProvider from "@/components/context/GlobalProvider.js";
 import defaultMetadata from "@/components/data/metadata.json";
-import icon from "@/assets/icon.png";
+import favicon from "@/assets/favicon.png";
 import "@/styles/globals.scss";
 
 const title = defaultMetadata.title;
@@ -10,7 +10,7 @@ export const metadata = {
 	title: title,
 	description: description,
 	icons: {
-		icon: icon.src
+		icon: favicon.src
 	}
 };
 
