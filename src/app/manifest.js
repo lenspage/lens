@@ -1,4 +1,4 @@
-import icon from "@/assets/icon.png";
+import favicon from "@/assets/favicon.png";
 import metadata from "@/components/data/metadata.json";
 
 export default function manifest() {
@@ -12,7 +12,7 @@ export default function manifest() {
 		theme_color: "#000000",
 		icons: [
 			{
-				src: icon.src,
+				src: favicon.src,
 				sizes: "any",
 				type: "image/png"
 			}
