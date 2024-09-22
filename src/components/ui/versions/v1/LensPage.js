@@ -8,8 +8,12 @@ import Profile from "@/components/ui/versions/v1/formats/Profile.js";
 import Article from "@/components/ui/versions/v1/formats/Article.js";
 
 export default function LensPage({ data, params }) {
-	const { setCurrentTheme, animationLoaded, codeBlockLoaded } =
-		useGlobalContext();
+	const {
+		setCurrentTheme,
+		animationLoaded,
+		codeBlockLoaded,
+		blinkBlockLoaded
+	} = useGlobalContext();
 	const [appHasLoaded, setAppHasLoaded] = useState();
 
 	const format = data[0].format;
@@ -19,11 +23,11 @@ export default function LensPage({ data, params }) {
 	const label = format === "profile" && "PROFILE";
 
 	useEffect(() => {
-		if (animationLoaded && codeBlockLoaded) {
+		if (animationLoaded && codeBlockLoaded && blinkBlockLoaded) {
 			setCurrentTheme(data[0].design?.theme || "dark");
 			setAppHasLoaded(true);
 		}
-	}, [animationLoaded, codeBlockLoaded]);
+	}, [animationLoaded, codeBlockLoaded, blinkBlockLoaded]);
 
 	return (
 		<>

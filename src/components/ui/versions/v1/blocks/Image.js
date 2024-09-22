@@ -3,7 +3,7 @@ export default function Image({ gateway, item }) {
 		<>
 			<div className={`px-4 ${!item.attributes?.bleed && "max-[600px]:px-0"}`}>
 				<img
-					className={`${item.attributes?.bleed ? "rounded-2xl" : ""} ${item.attributes?.blend && item.attributes?.blend ? "mix-blend-exclusion" : ""}`}
+					className={`${item.attributes?.bleed ? "rounded-lg" : ""} ${item.attributes?.blend && item.attributes?.blend ? "mix-blend-exclusion" : ""}`}
 					src={
 						item.value.startsWith("ipfs://")
 							? `${gateway}/ipfs/${item.value.replace("ipfs://", "")}`

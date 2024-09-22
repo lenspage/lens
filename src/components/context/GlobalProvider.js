@@ -10,6 +10,9 @@ export default function GlobalProvider({ children }) {
 	const [currentTheme, setCurrentTheme] = useState("dark");
 	const [animationLoaded, setAnimationLoaded] = useState(false);
 	const [codeBlockLoaded, setCodeBlockLoaded] = useState(true);
+	const [blinkBlockLoaded, setBlinkBlockLoaded] = useState(true);
+	const [selectedWallet, setSelectedWallet] = useState(null);
+	const [isSelectWalletModalOpen, setIsSelectWalletModalOpen] = useState(false);
 
 	return (
 		<Context.Provider
@@ -19,7 +22,13 @@ export default function GlobalProvider({ children }) {
 				animationLoaded,
 				setAnimationLoaded,
 				codeBlockLoaded,
-				setCodeBlockLoaded
+				setCodeBlockLoaded,
+				blinkBlockLoaded,
+				setBlinkBlockLoaded,
+				selectedWallet,
+				setSelectedWallet,
+				isSelectWalletModalOpen,
+				setIsSelectWalletModalOpen
 			}}
 		>
 			{children}

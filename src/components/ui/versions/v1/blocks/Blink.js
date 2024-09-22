@@ -1,29 +1,33 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useGlobalContext } from "@/components/context/GlobalProvider.js";
 import { walletList } from "@/components/utils/walletList.js";
 import { Connection, VersionedTransaction } from "@solana/web3.js";
 import { ActionConfig, useAction } from "@dialectlabs/blinks-core";
 import { Blink } from "@dialectlabs/blinks";
+import Image from "next/image";
 import web3 from "@/assets/icons/web3-icon.png";
 import phantom from "@/assets/icons/phantom-icon.png";
 import "@dialectlabs/blinks/index.css";
 import "@/styles/blinks.scss";
 
 export default function BlinkComponent({ item }) {
-	const [isSelectWalletModalOpen, setIsSelectWalletModalOpen] = useState(false);
+	const {
+		setBlinkBlockLoaded,
+		selectedWallet,
+		setSelectedWallet,
+		isSelectWalletModalOpen,
+		setIsSelectWalletModalOpen
+	} = useGlobalContext();
 	const [learn, setLearn] = useState(false);
 	const [providerDetected, setProviderDetected] = useState(false);
-	const [selectedWallet, setSelectedWallet] = useState(null);
 	const [wallets, setWallets] = useState([]);
 	const walletsMaxIndex = wallets.length !== 0 ? wallets.length - 1 : 0;
 
-	const selectWallet = (selectedWallet) => {
-		localStorage.setItem("wallet", selectedWallet.name);
-		setSelectedWallet(selectedWallet);
-		setIsSelectWalletModalOpen(false);
-	};
+	useEffect(() => {
+		setBlinkBlockLoaded(false);
+	}, [item]);
 
 	const connection = new Connection(
 		process.env.NEXT_PUBLIC_SOLANA_RPC_API,
@@ -44,16 +48,6 @@ export default function BlinkComponent({ item }) {
 						provider: walletProvider,
 						detected: true
 					});
-					if (name === localStorage.getItem("wallet")) {
-						if (walletProvider.isConnected) {
-							setSelectedWallet({
-								name,
-								icon,
-								provider: walletProvider,
-								publicKey: walletProvider.publicKey.toString()
-							});
-						}
-					}
 				}
 				if (!walletProvider && !active) {
 					walletListArray.push({
@@ -79,7 +73,7 @@ export default function BlinkComponent({ item }) {
 	const adapter = new ActionConfig(connection, {
 		connect: async () => {
 			try {
-				if (selectedWallet) {
+				if (selectedWallet?.publicKey) {
 					return selectedWallet.publicKey;
 				} else {
 					setIsSelectWalletModalOpen(true);
@@ -90,12 +84,13 @@ export default function BlinkComponent({ item }) {
 		},
 		signTransaction: async (message) => {
 			try {
-				if (selectedWallet) {
+				if (selectedWallet?.publicKey) {
+					const provider = selectedWallet.provider;
 					const transactionMessage = VersionedTransaction.deserialize(
 						Buffer.from(message, "base64")
 					);
 					const signedTransaction =
-						await selectedWallet.provider.signTransaction(transactionMessage);
+						await provider.signTransaction(transactionMessage);
 					const transactionSignature =
 						await connection.sendTransaction(signedTransaction);
 					return { signature: transactionSignature };
@@ -109,6 +104,12 @@ export default function BlinkComponent({ item }) {
 	const { action } = useAction({ url: item.value, adapter });
 
 	useEffect(() => {
+		if (wallets && action) {
+			setBlinkBlockLoaded(true);
+		}
+	}, [wallets, action]);
+
+	useEffect(() => {
 		setLearn(false);
 		if (wallets && action) {
 			const selectWalletModal = document.getElementById("wallets");
@@ -120,14 +121,26 @@ export default function BlinkComponent({ item }) {
 		}
 	}, [isSelectWalletModalOpen, wallets, action]);
 
+	const selectWallet = async (selectedWallet) => {
+		await selectedWallet.provider.connect();
+		if (selectedWallet.provider.isConnected) {
+			setSelectedWallet({
+				name: selectedWallet.name,
+				provider: selectedWallet.provider,
+				publicKey: selectedWallet.provider.publicKey.toString()
+			});
+			setIsSelectWalletModalOpen(false);
+		}
+	};
+
 	return (
 		action &&
 		wallets && (
 			<>
 				{item.attributes?.image && (
-					<div className="px-4">
+					<div className="px-4 mb-5">
 						<img
-							className="rounded-xl"
+							className="rounded-lg"
 							src={
 								item.attributes?.image?.src.startsWith("ipfs://")
 									? `${gateway}/ipfs/${item.attributes?.image?.src.replace("ipfs://", "")}`
@@ -138,9 +151,21 @@ export default function BlinkComponent({ item }) {
 					</div>
 				)}
 				<div
-					className={`w-full hide-image mt-[-20px] ${item.attributes?.break ? "mb-[40px]" : "mb-[20px]"}`}
+					className={`w-full px-4 ${item.attributes?.break ? "mb-[40px]" : "mb-[20px]"}`}
 				>
-					<Blink action={action} websiteText={new URL(item.value).hostname} />
+					<div
+						className={`hide-padding hide-top-padding hide-rounded hide-image-svg-a ${!selectedWallet?.publicKey && "hide-button-input hide-peer hide-gap"}`}
+					>
+						<Blink action={action} websiteText={new URL(item.value).hostname} />
+					</div>
+					{!selectedWallet?.publicKey && (
+						<div
+							className="px-4 flex items-center justify-center text-center font-semibold bg-base-300 hover:bg-base-200 text-base-content w-full text-base h-[43.2px] rounded-lg cursor-pointer"
+							onClick={() => setIsSelectWalletModalOpen(true)}
+						>
+							Connect Wallet
+						</div>
+					)}
 				</div>
 				<dialog id="wallets" className="modal modal-bottom sm:modal-middle">
 					<div className="modal-box p-4">
@@ -195,7 +220,7 @@ export default function BlinkComponent({ item }) {
 											{data.name}
 										</div>
 										<div className="text-xs font-light">
-											{data.name === selectedWallet?.name
+											{data.name === selectedWallet
 												? "Currently Selected"
 												: data.detected
 													? "Detected"

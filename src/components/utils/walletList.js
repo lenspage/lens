@@ -1,6 +1,6 @@
+import backpack from "@/assets/icons/backpack-icon.png";
 import phantom from "@/assets/icons/phantom-icon.png";
 import solflare from "@/assets/icons/solflare-icon.png";
-import brave from "@/assets/icons/brave-icon.png";
 
 export const walletList = [
 	{
@@ -9,13 +9,13 @@ export const walletList = [
 		provider: "phantom.solana"
 	},
 	{
+		name: "Backpack",
+		icon: backpack.src,
+		provider: "backpack"
+	},
+	{
 		name: "Solflare",
 		icon: solflare.src,
 		provider: "solflare"
-	},
-	{
-		name: "Brave",
-		icon: brave.src,
-		provider: "braveSolana"
 	}
 ];
