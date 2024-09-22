@@ -14,7 +14,7 @@ import "@/styles/blinks.scss";
 export default function BlinkComponent({ item }) {
 	const [isSelectWalletModalOpen, setIsSelectWalletModalOpen] = useState(false);
 	const [learn, setLearn] = useState(false);
-    const [providerDetected, setProviderDetected] = useState(false);
+	const [providerDetected, setProviderDetected] = useState(false);
 	const [selectedWallet, setSelectedWallet] = useState(null);
 	const [wallets, setWallets] = useState([]);
 	const walletsMaxIndex = wallets.length !== 0 ? wallets.length - 1 : 0;
@@ -65,9 +65,9 @@ export default function BlinkComponent({ item }) {
 				}
 			});
 		indexWallets(true);
-        if (walletListArray.length > 0) {
-            setProviderDetected(true);
-        }
+		if (walletListArray.length > 0) {
+			setProviderDetected(true);
+		}
 		indexWallets(false);
 		setWallets(walletListArray);
 	}
@@ -124,11 +124,26 @@ export default function BlinkComponent({ item }) {
 		action &&
 		wallets && (
 			<>
-				<div className="w-full max-[1200px]:px-4 hide-image">
+				{item.attributes?.image && (
+					<div className="px-4">
+						<img
+							className="rounded-xl"
+							src={
+								item.attributes?.image?.src.startsWith("ipfs://")
+									? `${gateway}/ipfs/${item.attributes?.image?.src.replace("ipfs://", "")}`
+									: item.attributes?.image?.src
+							}
+							alt={item.attributes?.image?.alt}
+						/>
+					</div>
+				)}
+				<div
+					className={`w-full hide-image mt-[-20px] ${item.attributes?.break ? "mb-[40px]" : "mb-[20px]"}`}
+				>
 					<Blink action={action} websiteText={new URL(item.value).hostname} />
 				</div>
 				<dialog id="wallets" className="modal modal-bottom sm:modal-middle">
-					<div className="modal-box p-4 outline outline-1 outline-base-100 bg-base-300">
+					<div className="modal-box p-4">
 						<form method="dialog">
 							<button
 								className="btn btn-sm btn-circle btn-ghost focus:outline-none focus:ring-0 absolute right-2 top-2"
@@ -142,7 +157,7 @@ export default function BlinkComponent({ item }) {
 								<h3 className="font-bold text-md">Select a wallet</h3>
 								<div className="h-6" />
 								<button
-									className="btn btn-base-100 btn-lg px-3 transition-color duration-300 w-full text-base"
+									className="btn btn-base-100 btn-lg px-3 rounded-lg transition-color duration-300 w-full text-base"
 									onClick={() => setLearn(true)}
 								>
 									<div className="flex items-center justify-between w-full">
@@ -160,8 +175,6 @@ export default function BlinkComponent({ item }) {
 										<div className="text-xs font-light">Learn</div>
 									</div>
 								</button>
-								<div className="h-6" />
-								<div className="w-full h-[1px] bg-base-100 px-0" />
 								<div className="h-6" />
 								{wallets.map((data, index) => (
 									<button
@@ -222,7 +235,7 @@ export default function BlinkComponent({ item }) {
 								</div>
 								<div className="h-7" />
 								{!providerDetected ? (
-									<button className="btn btn-base-100 btn-lg px-3 transition-color duration-300 w-full text-base">
+									<button className="btn btn-base-100 btn-lg px-3 rounded-lg transition-color duration-300 w-full text-base">
 										<a
 											href="https://phantom.app"
 											target="_blank"
@@ -247,7 +260,7 @@ export default function BlinkComponent({ item }) {
 									</button>
 								) : (
 									<button
-										className="btn btn-base-100 btn-lg px-3 transition-color duration-300 w-full text-base"
+										className="btn btn-base-100 btn-lg px-3 rounded-lg transition-color duration-300 w-full text-base"
 										onClick={() => setLearn(false)}
 									>
 										<div className="flex items-center justify-between w-full">
