@@ -3,7 +3,11 @@
 import { useState, useEffect } from "react";
 import { useGlobalContext } from "@/components/context/GlobalProvider.js";
 import { walletList } from "@/components/utils/walletList.js";
-import { Connection, VersionedTransaction } from "@solana/web3.js";
+import {
+	clusterApiUrl,
+	Connection,
+	VersionedTransaction
+} from "@solana/web3.js";
 import { ActionConfig, useAction } from "@dialectlabs/blinks-core";
 import { Blink } from "@dialectlabs/blinks";
 import Image from "next/image";
@@ -30,7 +34,7 @@ export default function BlinkComponent({ item }) {
 	}, [item]);
 
 	const connection = new Connection(
-		process.env.NEXT_PUBLIC_SOLANA_RPC_API,
+		item.attributes.api || clusterApiUrl("mainnet-beta"),
 		"confirmed"
 	);
 
@@ -134,8 +138,8 @@ export default function BlinkComponent({ item }) {
 	};
 
 	return (
-		action &&
-		wallets && (
+		wallets &&
+		action && (
 			<>
 				{item.attributes?.image && (
 					<div className="px-4 mb-5">
@@ -154,7 +158,7 @@ export default function BlinkComponent({ item }) {
 					className={`w-full px-4 ${item.attributes?.break ? "mb-[40px]" : "mb-[20px]"}`}
 				>
 					<div
-						className={`hide-padding hide-top-padding hide-rounded hide-image-svg-a ${!selectedWallet?.publicKey && "hide-button-input hide-peer hide-gap"}`}
+						className={`hide-content ${!selectedWallet?.publicKey && "hide-content-before-connecting"}`}
 					>
 						<Blink action={action} websiteText={new URL(item.value).hostname} />
 					</div>
@@ -236,26 +240,25 @@ export default function BlinkComponent({ item }) {
 								<div className="h-6" />
 								<div className="flex flex-col items-center justify-center w-full">
 									<p className="text-left text-sm">
-										A Web3 wallet is a localized digital software that allows
+										A web3 wallet is a localized digital software that allows
 										users to interact with decentralized applications, called
 										dApps, and blockchain networks, such as Solana, directly
 										from their web browser or mobile device.
 									</p>
 									<div className="h-6" />
 									<p className="text-left text-sm">
-										Web3 wallets operate like cash in your pocket, only the
-										assets are digital. No third party can tamper with these
-										assets. Unlike traditional digital assets, which are usually
-										hosted by a third party, the digital assets in your wallet
-										are controlled solely by you.
+										Web3 wallets function like carrying cash or personal items,
+										but in digital form. No third party can interfere with these
+										assets, as access is encrypted using secrets that only you
+										possess.
 									</p>
 									<div className="h-6" />
 									<p className="text-left text-sm">
-										A web3 wallet provides users with a secure way to store
+										These wallets provides users with a secure way to store
 										private keys, sign transactions, and connect to various
 										decentralized platforms, making them essential for engaging
 										with the decentralized web (web3). Popular examples include
-										Phantom, Solflare, and Brave.
+										Phantom, Backpack, and Solflare.
 									</p>
 								</div>
 								<div className="h-7" />
