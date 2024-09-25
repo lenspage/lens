@@ -1,0 +1,148 @@
+.hide-content {
+	img {
+		display: none !important;
+	}
+
+	a {
+		display: none !important;
+	}
+
+	.text-text-link {
+		display: none !important;
+	}
+
+	.mb-2 {
+		margin-bottom: 0px !important;
+	}
+
+	.mb-4 {
+		margin-bottom: 0px !important;
+	}
+
+	.p-5 {
+		padding: 0px !important;
+	}
+
+	.pt-5 {
+		padding-top: 0px !important;
+	}
+
+	.rounded-2xl {
+		border-radius: 0px !important;
+	}
+}
+
+.hide-content-before-connecting {
+	button {
+		display: none !important;
+	}
+
+	input {
+		display: none !important;
+	}
+
+	.peer {
+		display: none !important;
+	}
+
+	.gap-1 {
+		display: none !important;
+	}
+
+	.gap-2 {
+		display: none !important;
+	}
+
+	.gap-3 {
+		display: none !important;
+	}
+
+	.gap-4 {
+		display: none !important;
+	}
+
+	.gap-5 {
+		display: none !important;
+	}
+}
+
+.hide-title {
+	.text-text-primary {
+		display: none !important;
+	}
+}
+
+.hide-description {
+	.text-text-secondary {
+		display: none !important;
+	}
+}
+
+.blink {
+	.text-text-primary {
+		cursor: text !important;
+		line-height: 1 !important;
+		font-size: 24px !important;
+		font-weight: bold !important;
+		margin-bottom: 20px !important;
+	}
+
+	.text-text-secondary {
+		cursor: text !important;
+		font-size: 16px !important;
+		line-height: 24px !important;
+		margin-bottom: 20px !important;
+	}
+
+	.bg-transparent-warning {
+		display: none !important;
+	}
+
+	--blink-bg-primary: none !important;
+	--blink-button: oklch(var(--b3)) !important;
+	--blink-button-disabled: oklch(var(--b2)) !important;
+	--blink-button-hover: oklch(var(--b2)) !important;
+	--blink-button-success: oklch(var(--su)) !important;
+
+	--blink-icon-error: oklch(var(--er)) !important;
+	--blink-icon-error-hover: oklch(var(--er)) !important;
+	--blink-icon-primary: none !important;
+	--blink-icon-primary-hover: none !important;
+	--blink-icon-warning: oklch(var(--wac)) !important;
+	--blink-icon-warning-hover: oklch(var(--wac)) !important;
+
+	--blink-input-bg: none !important;
+	--blink-input-stroke: oklch(var(--bc)) !important;
+	--blink-input-stroke-disabled: oklch(var(--bc)) !important;
+	--blink-input-stroke-error: oklch(var(--bc)) !important;
+	--blink-input-stroke-hover: oklch(var(--bc)) !important;
+	--blink-input-stroke-selected: oklch(var(--bc)) !important;
+
+	--blink-stroke-error: oklch(var(--er)) !important;
+	--blink-stroke-primary: oklch(var(--b1)) !important;
+	--blink-stroke-secondary: oklch(var(--b1)) !important;
+	--blink-stroke-warning: oklch(var(--wac)) !important;
+
+	--blink-text-brand: oklch(var(--p)) !important;
+	--blink-text-button: oklch(var(--bc)) !important;
+	--blink-text-button-disabled: oklch(var(--bc)) !important;
+	--blink-text-button-success: oklch(var(--suc)) !important;
+	--blink-text-error: oklch(var(--er)) !important;
+	--blink-text-error-hover: oklch(var(--er)) !important;
+	--blink-text-input: none !important;
+	--blink-text-input-disabled: none !important;
+	--blink-text-input-placeholder: grey !important;
+	--blink-text-link: #6e767d;
+	--blink-text-link-hover: #949ca4;
+	--blink-text-primary: none !important;
+	--blink-text-secondary: none !important;
+	--blink-text-success: oklch(var(--su)) !important;
+	--blink-text-warning: oklch(var(--wac)) !important;
+	--blink-text-warning-hover: oklch(var(--wac)) !important;
+
+	--blink-transparent-error: oklch(var(--er)) !important;
+	--blink-transparent-grey: none !important;
+	--blink-transparent-warning: oklch(var(--wa)) !important;
+
+	--blink-shadow-container: none !important;
+}

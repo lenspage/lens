@@ -8,7 +8,7 @@ const nextConfig = {
 				headers: [
 					{
 						key: "Content-Security-Policy",
-						value: `default-src 'self'; img-src 'self' https: data:; media-src 'self' https: data:; script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV === "development" && "'unsafe-eval'"} https: data:; frame-src 'self' https: data:; style-src 'self' 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com https://gist.githubusercontent.com https://gitlab.com; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;`
+						value: `default-src 'self'; img-src 'self' https: data:; media-src 'self' https: data:; script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV === "development" && "'unsafe-eval'"} https: data:; frame-src 'self' https: data:; style-src 'self' 'unsafe-inline'; connect-src 'self' https: data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;`
 					},
 					{ key: "X-Content-Type-Options", value: "nosniff" },
 					{ key: "X-Frame-Options", value: "DENY" },
@@ -26,4 +26,4 @@ const nextConfig = {
 	}
 };
 
-module.exports = nextConfig;
+export default nextConfig;

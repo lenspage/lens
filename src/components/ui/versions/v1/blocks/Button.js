@@ -16,7 +16,7 @@ export default function Button({ item }) {
 				className={`cursor-pointer px-4 ${item.attributes?.style !== "link" ? "w-full" : ""}`}
 			>
 				<button
-					className={`w-full ${!item.attributes?.style || item.attributes?.style === "default" ? "btn" : ""} ${item.attributes?.style === "primary" ? "btn btn-primary" : ""} ${item.attributes?.style === "secondary" ? "btn btn-secondary" : ""} ${item.attributes?.style === "link" ? "btn btn-link" : ""}`}
+					className={`w-full ${!item.attributes?.style || (item.attributes?.style === "default" && "btn")} ${item.attributes?.style === "primary" && "btn btn-primary"} ${item.attributes?.style === "secondary" && "btn btn-secondary"} ${item.attributes?.style === "link" && "btn btn-link"}`}
 				>
 					{item.value}
 				</button>

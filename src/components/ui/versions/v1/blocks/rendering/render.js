@@ -4,6 +4,7 @@ import Button from "@/components/ui/versions/v1/blocks/Button.js";
 import Image from "@/components/ui/versions/v1/blocks/Image.js";
 import Embed from "@/components/ui/versions/v1/blocks/Embed.js";
 import Code from "@/components/ui/versions/v1/blocks/Code.js";
+import Blink from "@/components/ui/versions/v1/blocks/Blink.js";
 import Video from "@/components/ui/versions/v1/blocks/Video.js";
 import Model from "@/components/ui/versions/v1/blocks/Model.js";
 
@@ -20,6 +21,8 @@ export function render(item, gateway) {
 		return <Embed item={item} />;
 	} else if (item.type.startsWith("code")) {
 		return <Code item={item} />;
+	} else if (item.type.startsWith("blink")) {
+		return <Blink item={item} />;
 	} else if (item.type.startsWith("video")) {
 		return <Video gateway={gateway} item={item} />;
 	} else if (item.type.startsWith("model")) {
