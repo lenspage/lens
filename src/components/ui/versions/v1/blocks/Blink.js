@@ -71,7 +71,11 @@ export default function BlinkComponent({ item }) {
 	}
 
 	useEffect(() => {
-		getWallets();
+		const timeoutId = setTimeout(() => {
+			getWallets();
+		}, 500);
+
+		return () => clearTimeout(timeoutId);
 	}, []);
 
 	const adapter = new ActionConfig(connection, {
