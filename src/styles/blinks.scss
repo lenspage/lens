@@ -66,6 +66,18 @@
 	}
 }
 
+.hide-title {
+	.text-text-primary {
+		display: none !important;
+	}
+}
+
+.hide-description {
+	.text-text-secondary {
+		display: none !important;
+	}
+}
+
 .blink {
 	.text-text-primary {
 		cursor: text !important;
