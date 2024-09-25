@@ -12,7 +12,7 @@ export default function Code({ item }) {
 	const [code, setCode] = useState(null);
 
 	async function fetchCode() {
-		const response = await fetch(item.value, { cache: "no-store"});
+		const response = await fetch(item.value, { cache: "no-store" });
 		const data = await response.text();
 		let highlight;
 		if (item.attributes?.language) {
