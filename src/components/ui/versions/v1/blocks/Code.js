@@ -14,7 +14,14 @@ export default function Code({ item }) {
 	async function fetchCode() {
 		const response = await fetch(item.value);
 		const data = await response.text();
-		const highlight = hljs.highlightAuto(data).value;
+		let highlight;
+		if (item.attributes?.language) {
+			highlight = hljs.highlight(data, {
+				language: item.attributes.language
+			}).value;
+		} else {
+			highlight = hljs.highlightAuto(data).value;
+		}
 		const sanitized = DOMPurify.sanitize(highlight);
 		setCode(sanitized);
 		setCodeBlockLoaded(true);
