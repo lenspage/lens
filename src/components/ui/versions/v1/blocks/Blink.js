@@ -141,24 +141,11 @@ export default function BlinkComponent({ item }) {
 		wallets &&
 		action && (
 			<>
-				{item.attributes?.image && (
-					<div className="px-4 mb-5">
-						<img
-							className="rounded-lg"
-							src={
-								item.attributes?.image?.src.startsWith("ipfs://")
-									? `${gateway}/ipfs/${item.attributes?.image?.src.replace("ipfs://", "")}`
-									: item.attributes?.image?.src
-							}
-							alt={item.attributes?.image?.alt}
-						/>
-					</div>
-				)}
 				<div
 					className={`w-full px-4 ${item.attributes?.break ? "mb-[40px]" : "mb-[20px]"}`}
 				>
 					<div
-						className={`hide-content ${!selectedWallet?.publicKey && "hide-content-before-connecting"}`}
+						className={`hide-content ${item.attributes?.hide?.title && "hide-title"} ${item.attributes?.hide?.description && "hide-description"} ${!selectedWallet?.publicKey && "hide-content-before-connecting"}`}
 					>
 						<Blink action={action} websiteText={new URL(item.value).hostname} />
 					</div>
