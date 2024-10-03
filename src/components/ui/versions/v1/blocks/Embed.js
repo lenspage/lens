@@ -10,7 +10,7 @@ export default function Embed({ item }) {
 			>
 				<iframe
 					allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-					className={`w-full overflow-hidden ${item.attributes?.bleed && "rounded-lg"} ${!item.attributes?.caption && (item.attributes?.break ? "mb-[40px]" : "mb-[20px]")}`}
+					className={`w-full overflow-hidden ${item.attributes?.bleed && item.attributes?.height ? "rounded-2xl" : item.attributes?.bleed && "rounded-lg"} ${!item.attributes?.caption && (item.attributes?.break ? "mb-[40px]" : "mb-[20px]")}`}
 					style={
 						item.attributes?.ratio
 							? { aspectRatio: item.attributes?.ratio }
