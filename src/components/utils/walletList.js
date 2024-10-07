@@ -4,14 +4,14 @@ import solflare from "@/assets/icons/solflare-icon.png";
 
 export const walletList = [
 	{
-		name: "Phantom",
-		icon: phantom.src,
-		provider: "phantom.solana"
-	},
-	{
 		name: "Backpack",
 		icon: backpack.src,
 		provider: "backpack"
+	},
+	{
+		name: "Phantom",
+		icon: phantom.src,
+		provider: "phantom.solana"
 	},
 	{
 		name: "Solflare",
