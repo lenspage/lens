@@ -12,7 +12,7 @@ import { ActionConfig, useAction } from "@dialectlabs/blinks-core";
 import { Blink } from "@dialectlabs/blinks";
 import Image from "next/image";
 import web3 from "@/assets/icons/web3-icon.png";
-import phantom from "@/assets/icons/phantom-icon.png";
+import backpack from "@/assets/icons/backpack-icon.png";
 import "@dialectlabs/blinks/index.css";
 import "@/styles/blinks.scss";
 
@@ -249,14 +249,14 @@ export default function BlinkComponent({ item }) {
 										private keys, sign transactions, and connect to various
 										decentralized platforms, making them essential for engaging
 										with the decentralized web (web3). Popular examples include
-										Phantom, Backpack, and Solflare.
+										Backpack, Phantom, and Solflare.
 									</p>
 								</div>
 								<div className="h-7" />
 								{!providerDetected ? (
 									<button className="btn btn-base-100 btn-lg px-3 rounded-lg transition-color duration-300 w-full text-base">
 										<a
-											href="https://phantom.app"
+											href="https://backpack.app"
 											target="_blank"
 											rel="noopener noreferrer"
 											className="w-full text-left text-base flex items-center"
@@ -264,14 +264,14 @@ export default function BlinkComponent({ item }) {
 											<div className="flex items-center justify-between w-full">
 												<div className="flex items-center justify-center">
 													<Image
-														src={phantom.src}
+														src={backpack.src}
 														alt="icon"
 														width={40}
 														height={40}
 														className="rounded-lg"
 													/>
 													<div className="w-3" />
-													Download Phantom
+													Download Backpack
 												</div>
 												<div className="text-xs font-light">Get Started</div>
 											</div>
