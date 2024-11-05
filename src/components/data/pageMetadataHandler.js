@@ -11,11 +11,10 @@ export default async function pageMetadataHandler({ params }) {
 
 	let metadata;
 	if (data) {
-		const index = data.length === 2 ? 1 : 0;
-		if (data[index].metadata?.title && data[index].metadata?.description) {
+		if (data[0].metadata?.title && data[0].metadata?.description) {
 			metadata = {
-				title: data[index].metadata.title,
-				description: data[index].metadata.description
+				title: data[0].metadata.title,
+				description: data[0].metadata.description
 			};
 		} else {
 			metadata = false;
